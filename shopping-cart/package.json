@@ -1,8 +1,8 @@
 {
-  "name": "kougou-m",
+  "name": "shopping-cart",
   "version": "1.0.0",
-  "description": "酷狗、",
-  "author": "lavyun <lavyun@163.com>",
+  "description": "shopping",
+  "author": "Tang",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
