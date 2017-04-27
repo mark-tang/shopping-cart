@@ -1,0 +1,35 @@
+/*
+ * Created by Tang on 2017/03/20.
+ */
+body{ margin:0; line-height:1.42857; font-size: 14px; color:#333; font-family:"helvetica neue","hiragino sans gb",stheiti,"wenquanyi micro hei",微软雅黑,宋体,sans-serif; font-size: 12px; background:#fff;}
+h1,h2,h3,h4,h5,h6,ul,ol,p,dl{ margin-top:0; margin-bottom:0;} h4,h5,h6{ font-size:1em;}  
+ul,ol{ padding-left:0; list-style:none;}  
+a{text-decoration:none;color:#000; }
+b, strong{font-weight: 700;}
+.fl{float: left;} 
+.fr{float: right;}
+.ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.clearfix{ zoom:1;
+	&::after{ content:""; clear: both;; display:block; height: 0; }
+}
+ 
+header{ height: 50px; line-height: 50px; background: #f8f8f8; border-bottom: 1px solid #e7e7e7; position: relative; padding:0 15px; @extend .clearfix;
+	h1{font-size: 18px; float: left; padding-right: 20px;}
+	.nav{ 
+		a{ display: inline-block;  color: #777; padding: 0 15px;
+			&.router-link-active{ background: #e7e7e7; color: #555; }
+			span{ background: #d9534f; color: #fff; padding: 3px 7px; border-radius: 10px; display: inline-block; line-height: 1; margin-left: 6px;}
+		}
+		
+	}
+}
+hr{ border-top: 1px solid #eee; margin: 20px 0; }
+.container{display: table; margin:20px auto 0; width: 60%;}
+.icon{ width: 20px; height: 20px; display: inline-block; vertical-align: middle; background-repeat: no-repeat;}
+.handle-btn{ width:100%; border:0 none; border-radius: 4px; background: #d9534f; color: #fff; padding: 6px 0; text-align: center; font-weight: 400; display: block;
+               cursor: pointer; vertical-align: middle;
+      &[disabled]{ cursor: not-allowed;  box-shadow: none; opacity: 0.65;}      
+      
+    }
+
+
