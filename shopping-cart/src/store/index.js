@@ -13,7 +13,8 @@ const store = new Vuex.Store({
       isSelected: true,      
       activeStyleUrl: 'http://o8yu724qs.bkt.clouddn.com/iphone6s-silver-select-2015.png',        
       buyNum:1,      
-      sum:0 
+      sum:0,
+      total:0,
     },    
     cart:[],
     initial:[]
@@ -46,7 +47,7 @@ const store = new Vuex.Store({
         state.iPhone6S.buyNum=1;
       }
     },
-    setAddItem:(state,totalNum,totalPrice) =>{  
+    setAddItem:(state) =>{  
       //Add shopping list
       const activeStyle = state.iPhone6S.activeColor === undefined ? '银色' : state.iPhone6S.activeColor;
       const type = activeStyle + '，' +  state.iPhone6S.activeStorage;   
@@ -56,17 +57,10 @@ const store = new Vuex.Store({
         price:state.iPhone6S.price,
         singleTotal:state.iPhone6S.price*state.iPhone6S.buyNum
       }
-      state.cart.push(cartlist);  
-      //total quanlity & total price 
-      var totalNum = 0,totalPrice = 0;
-      for (var i = 0; i < state.cart.length; i++) {
-        totalNum += Number(state.cart[i].quanlity);        
-      }     
-      for (var i = 0; i < state.cart.length; i++) {
-        totalPrice += Number(state.cart[i].singleTotal);   
-      } 
-      state.iPhone6S.sum= totalNum;
-      state.iPhone6S.total = totalPrice;
+      state.cart.push(cartlist); 
+      //total quanlity & total price
+      state.iPhone6S.sum += Number(state.iPhone6S.buyNum);
+      state.iPhone6S.total += state.iPhone6S.price*Number(state.iPhone6S.buyNum);
        //initial
       state.iPhone6S.buyNum = 1;       
       state.iPhone6S.price = state.initial[0].price; 
@@ -75,16 +69,10 @@ const store = new Vuex.Store({
       state.iPhone6S.quanlity = false;
     },
     removeItem:(state,index)=>{
+      //total quanlity & total price
+      state.iPhone6S.sum -=state.cart[index].quanlity;
+      state.iPhone6S.total -=state.cart[index].singleTotal;
       state.cart.splice(index,1);
-      var totalNum = 0,totalPrice = 0;
-      for (var i = 0; i < state.cart.length; i++) {
-        totalNum += Number(state.cart[i].quanlity);        
-      }     
-      for (var i = 0; i < state.cart.length; i++) {     
-        totalPrice += Number(state.cart[i].singleTotal);   
-      } 
-      state.iPhone6S.sum= totalNum;
-      state.iPhone6S.total = totalPrice;      
     },
     saveInitialVal:(state,cell)=>{
       state.initial=cell;      
@@ -93,6 +81,4 @@ const store = new Vuex.Store({
   actions: {    
   }
 });
-
 export default store
-
